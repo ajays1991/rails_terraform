@@ -7,8 +7,8 @@ locals {
 
 provider "aws" {
   region = var.region
-  access_key = "AKIAJ5M6TSQGVWWHF2PQ"
-  secret_key = "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"
+  access_key = "**********************"
+  secret_key = "**********************"
   #profile = "duduribeiro"
 }
 
