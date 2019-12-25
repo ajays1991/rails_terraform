@@ -109,7 +109,7 @@ resource "aws_codepipeline" "pipeline" {
         Owner      = "ajays1991"
         Repo       = "rails_terraform"
         Branch     = "master"
-        OAuthToken = "4ef510e188cfe2a3dfa10d06a5d9735400df8259"
+        OAuthToken = "******************************"
       }
     }
   }

@@ -34,40 +34,97 @@ configuration = {
 
 ### Deploying application to AWS
 
-In production.tf set access_key and secret_key for AWS account.
+In deploy.tf set access_key and secret_key for AWS account.
 
 ```
 provider "aws" {
   region = var.region
   access_key = "**********************"
   secret_key = "**********************"
-  #profile = "duduribeiro"
 }
 ```
-In terraform.tfvars file set region, database_name, database username, database password, secret_key_base for rails application.
+
+### Switch environment to deploy to aws
+
+In application root folder create `.tfvars` file for staging, production, testing environment. Define all variables in `variables.tf` file and specify value for each variable in `.tfvars` file for each environment.
+
+For example, in `variables.tf` file define variables as follows
+
 ```
-region                        = "your-selected-region"
-domain                        = "your domain"
+variable "region" {
+  description = "Region that the instances will be created"
+}
+
+/*====
+environment specific variables
+======*/
+
+variable "database_name" {
+  description = "The database name for Production"
+}
+
+variable "database_username" {
+  description = "The username for the Production database"
+}
+
+variable "database_password" {
+  description = "The user password for the Production database"
+}
+
+variable "secret_key_base" {
+  description = "The Rails secret key for production"
+}
+
+variable "domain" {
+  default = "The domain of your application"
+}
+
+variable "rabbit_name" {
+	description = "A random environment"
+}
+
+variable "environment" {
+	description = "Environment for the application"
+}
+
+variable "availability_zones" {
+	type = "list"
+}
+```
+
+And in `production.tfvars` or `staging.tfvars` the value for each variable can be set.
+For example in `production.tfvars`
+
+```
+region                        = "us-east-1"
+domain                        = "railsterraform.com"
 
 /* rds */
-production_database_name      = "production database name"
-production_database_username  = "username"
-production_database_password  = "database-password"
+database_name      = "railsterraform_production"
+database_username  = "railsterraform"
+database_password  = "myawesomepasswordproduction"
 
 /* secret key */
-production_secret_key_base    = "secret-key-base"
+secret_key_base    = "8d412aee3ceaa494fe1c276f5f7e524b9e33f649c03690e689e5b36a0cf4ce2a6f50024bc31f276c22b668e619d61a42b79f5e595759f377a8fa373e2907f41e"
+
+rabbit_name = "Yo Yo Singh"
+environment = "production"
+
+availability_zones = ["us-east-1a", "us-east-1b"]
 
 ```
+
 After this setup run the following command in project root
 `$ terraform init`
 
-After successfully installing the terraform plugins run the following command
+After successfully installing the terraform plugins run the plan command. When running the plan command pass `--var-file` argument to command with value of the `.tfvars` file you want to run for.
+For example to deploy the application to `staging` environment run the following command
 
-`$ terraform plan`
+`$ terraform plan --var-file=staging.tfvars`
 
 After successfully creating the plan run the following command
 
-`$ terraform apply`
+`$ terraform apply --var-file=staging.tfvars`
 
 This will start creating your AWS infrastructure for the application and will success with providing url for the application loadbalancer using the following command
 
