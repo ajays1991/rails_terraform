@@ -2,9 +2,9 @@
 
 ### Resources
 
-  - [Terraform]([https://www.terraform.io](https://www.terraform.io/))
-  - [Docker]([https://www.docker.com/](https://www.docker.com/))
-  - [AWS Codepipeline]([https://aws.amazon.com/codepipeline/](https://aws.amazon.com/codepipeline/))
+  - Terraform https://www.terraform.io
+  - Docker https://www.docker.com/
+  - AWS Codepipeline https://aws.amazon.com/codepipeline/
 
 ### System Installation
 
