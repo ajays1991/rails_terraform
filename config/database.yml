@@ -12,7 +12,7 @@ default: &default
   #host: db
   host: localhost
   username: postgres
-  password:
+  password: postgres
   # user: gnpsllco_papaer
   # password: sharma@123
 

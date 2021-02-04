@@ -106,7 +106,7 @@ resource "aws_codepipeline" "pipeline" {
       output_artifacts = ["source"]
 
       configuration = {
-        Owner      = "ajays1991"
+        Owner      = "xmarvin"
         Repo       = "rails_terraform"
         Branch     = "master"
         OAuthToken = "******************************"
