@@ -1,0 +1,17 @@
+<h1>
+ Add Note
+</h1>
+<%= form_for Note.new do |f|%>
+  <%= f.text_field :text %>
+  <%= f.submit %>
+<% end %>
+
+<h2>
+  Notes
+</h2>
+<% @notes.each do |note| %>
+  <div>
+    <%= note.text %> (<%= note.created_at %>)
+  </div>
+<% end %>
+
