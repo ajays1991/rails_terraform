@@ -15,11 +15,11 @@ variable "ecs_service_name" {
 }
 
 variable "run_task_subnet_id" {
-  type 		  = "string"
+  type 		  = string
   description = "The subnet Id where single run task will be executed"
 }
 
 variable "run_task_security_group_ids" {
-  type        = "list"
+  type        = list
   description = "The security group Ids attached where the single run task will be executed"
 }

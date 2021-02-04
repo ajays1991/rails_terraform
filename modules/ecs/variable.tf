@@ -7,22 +7,22 @@ variable "vpc_id" {
 }
 
 variable "availability_zones" {
-  type        = "list"
+  type        = list
   description = "The azs to use"
 }
 
 variable "security_groups_ids" {
-  type        = "list"
+  type        = list
   description = "The SGs to use"
 }
 
 variable "subnets_ids" {
-  type        = "list"
+  type        = list
   description = "The private subnets to use"
 }
 
 variable "public_subnet_ids" {
-  type        = "list"
+  type        = list
   description = "The private subnets to use"
 }
 

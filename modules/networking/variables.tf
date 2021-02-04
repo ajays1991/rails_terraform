@@ -3,12 +3,12 @@ variable "vpc_cidr" {
 }
 
 variable "public_subnets_cidr" {
-  type        = "list"
+  type        = list
   description = "The CIDR block for the public subnet"
 }
 
 variable "private_subnets_cidr" {
-  type        = "list"
+  type        = list
   description = "The CIDR block for the private subnet"
 }
 
@@ -21,7 +21,7 @@ variable "region" {
 }
 
 variable "availability_zones" {
-  type        = "list"
+  type        = list
   description = "The az that the resources will be launched"
 }
 
