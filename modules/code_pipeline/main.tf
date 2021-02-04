@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "source" {
-  bucket        = "rails-terraform-experiment-source"
+  bucket        = "alexey-terraform"
   acl           = "private"
   force_destroy = true
 }
@@ -53,6 +53,7 @@ data "template_file" "buildspec" {
   vars = {
     repository_url     = var.repository_url
     region             = var.region
+    environment        = var.environment
     cluster_name       = var.ecs_cluster_name
     subnet_id          = var.run_task_subnet_id
     security_group_ids = join(",", var.run_task_security_group_ids)

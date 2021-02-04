@@ -6,6 +6,10 @@ variable "region" {
   description = "The region to use"
 }
 
+variable "environment" {
+	description = "Environment for the application"
+}
+
 variable "ecs_cluster_name" {
   description = "The cluster that we will deploy"
 }
