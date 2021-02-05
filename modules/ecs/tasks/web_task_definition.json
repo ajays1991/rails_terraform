@@ -28,6 +28,10 @@
         "value": "${database_url}"
       },
       {
+        "name": "REDIS_URL",
+        "value": "${redis_url}"
+      },
+      {
         "name": "SECRET_KEY_BASE",
         "value": "${secret_key_base}"
       },

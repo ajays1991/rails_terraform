@@ -4,7 +4,8 @@ class NotesController < ApplicationController
   end
 
   def create
-    Note.create(text: params[:note][:text])
+    note = Note.create(text: params[:note][:text])
+    NoteWorker.perform_async(note.id)
     redirect_to notes_path
   end
 end
