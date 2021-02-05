@@ -40,6 +40,8 @@ module "rds" {
 module "redis" {
   source            = "./modules/redis"
   environment       = var.environment
+  subnet_ids        = module.networking.private_subnets_id
+  vpc_id            = module.networking.vpc_id
 }
 
 module "ecs" {
