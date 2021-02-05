@@ -110,7 +110,7 @@ resource "aws_codepipeline" "pipeline" {
         Owner      = "xmarvin"
         Repo       = "rails_terraform"
         Branch     = "master"
-        OAuthToken = "******************************"
+        OAuthToken = var.token
       }
     }
   }

@@ -6,6 +6,10 @@ variable "region" {
   description = "The region to use"
 }
 
+variable "token" {
+  description = "Github token"
+}
+
 variable "environment" {
 	description = "Environment for the application"
 }

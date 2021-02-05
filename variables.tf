@@ -34,6 +34,10 @@ variable "environment" {
 	description = "Environment for the application"
 }
 
+variable "token" {
+	description = "Github token"
+}
+
 variable "availability_zones" {
 	type = list
 }
