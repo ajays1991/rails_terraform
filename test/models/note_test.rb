@@ -8,4 +8,9 @@ class NoteTest < ActiveSupport::TestCase
   test "return false" do
     assert_not Note.new({text: "order is blank"}).contains_digits?
   end
+
+  test "returns notes count" do
+    2.times { |i| Note.create(text: "note #{i}") }
+    assert_equal Note.count, 2
+  end
 end
