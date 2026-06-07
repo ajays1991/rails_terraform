@@ -7,8 +7,8 @@ locals {
 
 provider "aws" {
   region = var.availability_zones
-  access_key = "AKIAQSZ6Q4BKJ6JVYP7Y"
-  secret_key = "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"
+  access_key = ""
+  secret_key = ""
 }
 
 resource "aws_key_pair" "key" {
