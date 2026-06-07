@@ -6,9 +6,9 @@ locals {
 }
 
 provider "aws" {
-  region = var.region
-  access_key = "******************************"
-  secret_key = "******************************"
+  region = var.availability_zones
+  access_key = "AKIAQSZ6Q4BKJ6JVYP7Y"
+  secret_key = "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"
 }
 
 resource "aws_key_pair" "key" {
@@ -23,8 +23,9 @@ module "networking" {
   public_subnets_cidr  = ["10.0.1.0/24", "10.0.2.0/24"]
   private_subnets_cidr = ["10.0.10.0/24", "10.0.20.0/24"]
   region               = var.region
-  availability_zones   = local.availability_zones
+  availability_zones   = var.availability_zones
   key_name             = "production_key"
+  availability_zones_network  = var.availability_zones
 }
 
 module "rds" {
@@ -36,14 +37,16 @@ module "rds" {
   database_password = var.database_password
   subnet_ids        = module.networking.private_subnets_id
   vpc_id            = module.networking.vpc_id
-  instance_class    = "db.t2.micro"
+  instance_class    = "db.t4g.micro"
 }
 
 module "ecs" {
   source             = "./modules/ecs"
   environment        = var.environment
   vpc_id             = module.networking.vpc_id
-  availability_zones = local.availability_zones
+  region = var.region
+  availability_zones_network  = var.availability_zones
+  availability_zones   = var.availability_zones
   repository_name    = "rails_terraform/production"
   subnets_ids        = module.networking.private_subnets_id
   public_subnet_ids  = module.networking.public_subnets_id

@@ -35,5 +35,10 @@ variable "environment" {
 }
 
 variable "availability_zones" {
-	type = "list"
+	type = string
+}
+
+variable "availability_zones_network" {
+  type        = list(string)
+  description = "The az that the resources will be launched"
 }

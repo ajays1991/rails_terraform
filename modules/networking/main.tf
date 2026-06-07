@@ -29,7 +29,7 @@ resource "aws_internet_gateway" "ig" {
 
 /* Elastic IP for NAT */
 resource "aws_eip" "nat_eip" {
-  vpc        = true
+  domain = "vpc"
   depends_on = ["aws_internet_gateway.ig"]
 }
 
@@ -40,7 +40,7 @@ resource "aws_nat_gateway" "nat" {
   depends_on    = ["aws_internet_gateway.ig"]
 
   tags = {
-    Name        = "${var.environment}-${element(var.availability_zones, 1)}-nat"
+    Name        = "${var.environment}-${element(var.availability_zones_network, 1)}-nat"
     Environment = "${var.environment}"
   }
 }
@@ -50,11 +50,11 @@ resource "aws_subnet" "public_subnet" {
   vpc_id                  = "${aws_vpc.vpc.id}"
   count                   = "${length(var.public_subnets_cidr)}"
   cidr_block              = "${element(var.public_subnets_cidr, count.index)}"
-  availability_zone       = "${element(var.availability_zones, count.index)}"
+  availability_zone       = "${element(var.availability_zones_network, count.index)}"
   map_public_ip_on_launch = true
 
   tags = {
-    Name        = "${var.environment}-${element(var.availability_zones, count.index)}-public-subnet"
+    Name        = "${var.environment}-${element(var.availability_zones_network, count.index)}-public-subnet"
     Environment = "${var.environment}"
   }
 }
@@ -64,11 +64,11 @@ resource "aws_subnet" "private_subnet" {
   vpc_id                  = "${aws_vpc.vpc.id}"
   count                   = "${length(var.private_subnets_cidr)}"
   cidr_block              = "${element(var.private_subnets_cidr, count.index)}"
-  availability_zone       = "${element(var.availability_zones, count.index)}"
+  availability_zone       = "${element(var.availability_zones_network, count.index)}"
   map_public_ip_on_launch = false
 
   tags = {
-    Name        = "${var.environment}-${element(var.availability_zones, count.index)}-private-subnet"
+    Name        = "${var.environment}-${element(var.availability_zones_network, count.index)}-private-subnet"
     Environment = "${var.environment}"
   }
 }
