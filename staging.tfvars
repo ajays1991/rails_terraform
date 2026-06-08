@@ -12,6 +12,5 @@ secret_key_base    = "8d412aee3ceaa494fe1c276f5f7e524b9e33f649c03690e689e5b36a0c
 rabbit_name = "Yo Yo Singh"
 environment = "production"
 
-availability_zones = "ap-south-1a"
-
-availability_zones_network = ["ap-south-1a"]
+availability_zones         = ["ap-south-1a", "ap-south-1b"]
+availability_zones_network = ["ap-south-1a", "ap-south-1b"]

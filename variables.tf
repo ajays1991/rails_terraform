@@ -35,7 +35,7 @@ variable "environment" {
 }
 
 variable "availability_zones" {
-	type = string
+  type = list(string)
 }
 
 variable "availability_zones_network" {

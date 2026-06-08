@@ -14,7 +14,7 @@
       "logDriver": "awslogs",
       "options": {
         "awslogs-group": "${log_group}",
-        "awslogs-region": "${availability_zones}",
+        "awslogs-region": "${region}",
         "awslogs-stream-prefix": "web"
       }
     },

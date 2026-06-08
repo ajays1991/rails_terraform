@@ -38,6 +38,7 @@ data "template_file" "web_task" {
     secret_key_base = "${var.secret_key_base}"
     database_url    = "postgresql://${var.database_username}:${var.database_password}@${var.database_endpoint}:5432/${var.database_name}?encoding=utf8&pool=40"
     log_group       = "${aws_cloudwatch_log_group.rails_terraform.name}"
+    region          = var.region
   }
 }
 
@@ -61,6 +62,7 @@ data "template_file" "db_migrate_task" {
     secret_key_base = "${var.secret_key_base}"
     database_url    = "postgresql://${var.database_username}:${var.database_password}@${var.database_endpoint}:5432/${var.database_name}?encoding=utf8&pool=40"
     log_group       = "rails_terraform"
+    region          = var.region
   }
 }
 

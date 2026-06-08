@@ -6,7 +6,7 @@ locals {
 }
 
 provider "aws" {
-  region = var.availability_zones
+  region = var.region
   access_key = ""
   secret_key = ""
 }

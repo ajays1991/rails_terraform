@@ -7,7 +7,7 @@ variable "vpc_id" {
 }
 
 variable "availability_zones" {
-  type        = string
+  type        = list(string)
   description = "The azs to use"
 }
 
